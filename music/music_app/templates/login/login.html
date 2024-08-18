@@ -1,0 +1,208 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #efe5e5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            display: flex;
+            width: 50%;
+            max-width: 1200px;
+            background-color: white;
+            height: auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-side {
+            background-color: #37a3c4;
+            color: white;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .login-side .star-icon {
+            font-size: 200px;
+        }
+
+        .login-side h3 {
+            color: black;
+            margin-top: 10px;
+            font-size: 24px;
+        }
+
+        .login-form-side {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .login-form {
+            width: 100%;
+        }
+
+        h2.text-info {
+            color: #37a3c4;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        p.text-center {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 20px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #a9a9a9;
+            outline: none;
+            padding-left: 10px;
+            padding-top: 20px;
+            /* Add extra padding at the top to make space for the label */
+        }
+
+        .form-control:focus {
+            border-color: #37a3c4;
+        }
+
+        .form-control::placeholder {
+            color: transparent;
+            /* Make placeholder text invisible */
+        }
+
+        label {
+            position: absolute;
+            top: 50%;
+            /* Center vertically */
+            left: 10px;
+            background-color: #fff;
+            padding: 0 5px;
+            font-size: 16px;
+            color: #a9a9a9;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            transform: translateY(-50%);
+            /* Center the label vertically within the input */
+        }
+
+        .form-control:focus~label,
+        .form-control:not(:placeholder-shown)~label {
+            top: -10px;
+            /* Move the label above the input */
+            left: 10px;
+            font-size: 12px;
+            color: #37a3c4;
+            background-color: #fff;
+            padding: 0 5px;
+        }
+
+        .btn-info {
+            background-color: #37a3c4;
+            border-color: #37a3c4;
+            border-radius: 20px;
+            padding: 10px 20px;
+            width: 100%;
+        }
+
+        .btn-info:hover {
+            background-color: #2a809c;
+        }
+
+        .text-info {
+            color: #37a3c4;
+        }
+
+        .text-right a,
+        .text-center a {
+            color: #37a3c4;
+            text-decoration: none;
+        }
+
+        .text-right a:hover,
+        .text-center a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .login-side .star-icon {
+                font-size: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <!-- Left side -->
+        <div class="login-side">
+            <div class="text-center">
+                <span class="star-icon">&#9733;</span>
+            </div>
+            <h3>MUSIC APP</h3>
+        </div>
+
+        <!-- Right side -->
+        <div class="login-form-side">
+            <div class="login-form">
+                <h2 class="text-info text-center">Welcome</h2>
+                <p class="text-center">Login to your account to continue</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="username">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="password"
+                            required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="text-right">
+                        <a href="" class="text-info">Forgot your password?</a>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info">LOG IN</button>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    <p>Don’t have an account? <a href="{% url 'signup' %}" class="text-info">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
