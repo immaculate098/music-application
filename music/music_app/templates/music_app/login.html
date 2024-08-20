@@ -181,6 +181,12 @@
                 <p class="text-center">Login to your account to continue</p>
                 <form method="post">
                     {% csrf_token %}
+                    {{ form }}
+                    <input type="submit" value="Login">
+                    
+                </form>
+                {% comment %} <form method="post">
+                    {% csrf_token %}
                     <div class="form-group">
                         <input type="text" class="form-control" id="username" name="username" placeholder="username">
                         <label for="username">Username</label>
@@ -196,9 +202,9 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-info">LOG IN</button>
                     </div>
-                </form>
+                </form> {% endcomment %}
                 <div class="text-center mt-3">
-                    <p>Don’t have an account? <a href="{% url 'signup' %}" class="text-info">Sign up</a></p>
+                    <p>Don't have an account? <a href="{% url 'signup' %}" class="text-info">Sign up</a></p>
                 </div>
             </div>
         </div>
