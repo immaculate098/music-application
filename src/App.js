@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AudioProvider } from './components/AudioContext';
+import { AuthProvider } from './components/AuthContext';
+import Library from './components/Library';
+import Login from './components/Login';
+import './components/Common.css'; //css for the whole application is imported here
+import './components/responsive.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+    <AudioProvider>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route exact path="/" element={<Library />} />
+          <Route path="/login" component={Login} />
+        </Routes>
+      </div>
+    </Router>
+    </AudioProvider>
+    </AuthProvider>
   );
 }
 
