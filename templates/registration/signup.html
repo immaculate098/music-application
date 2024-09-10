@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+</head>
+
+<body class="bg-light">
+    <div class="container d-flex align-items-center justify-content-center login-containe my-2" style="height: 80%;">
+        <div class="row w-100">
+            <!-- Left side -->
+            <div class="col-md-6  d-none d-md-flex flex-column align-items-center justify-content-center text-white rounded-left" style="width: 60%; background-color: #37a3c4;">
+                <h1 class="text-center">Welcome to  MUSIC APP</h1>
+                <p class="text-center">"Your gateway to unlimited music"</p>
+                <div class="text-center">
+                    <span class="star-icon display-4">&#9733;</span>
+                </div>
+                <h3 class="text-center mt-4">Join the Community</h3>
+            </div>
+
+            <!-- Right side -->
+            <div class="col-md-6  d-flex flex-column align-items-center justify-content-center bg-white rounded-right shadow-sm" style="width: 40%;" >
+                <div class="w-100">
+                    <h2 class="text-center">Signup</h2>
+                    <p class="text-center text-muted mb-2">Create your account to get started</p>
+                    <form method="post" class="mt-2 d-flex flex-column align-items-center">
+                        {% csrf_token %}
+                        <div class="form-group mb-2 my_inputs">
+                            <strong>{{ form.username.label_tag }}</strong>
+
+                            {{ form.username }}
+                            {% comment %} <small class="form-text text-muted">{{ form.username.help_text }}</small> {% endcomment %}
+                        </div>
+                        <div class="form-group mb-2 my_inputs">
+                            <strong>{{ form.email.label_tag }}</strong>
+                            
+                            {{ form.email }}
+                            {% comment %} <small class="form-text text-muted">{{ form.email.help_text }}</small> {% endcomment %}
+                        </div>
+                        <div class="form-group mb-2 my_inputs">
+                            <strong>{{ form.profile_pic.label_tag }}</strong>
+                            
+                            {{ form.profile_pic }}
+                            {% comment %} <small class="form-text text-muted">{{ form.profile_pic.help_text }}</small> {% endcomment %}
+                        </div>
+                        <div class="form-group mb-2 my_inputs">
+                            <strong><label for="password1" class="font-weight-bold">Password:</label></strong>
+                            
+                            {{ form.password1 }}
+                        </div>
+                        <div class="form-group mb-2 my_inputs">
+                            <strong><label for="password2" class="font-weight-bold">Confirm Password:</label></strong>
+                            {{ form.password2 }}
+                        </div>
+                        <div class="form-group mb-2 my_inputs">
+                            <strong>{{ form.bio.label_tag }}</strong>
+                            
+                            
+                            {{ form.bio }}
+                            {% comment %} <small class="form-text text-muted">{{ form.bio.help_text }}</small> {% endcomment %}
+                        </div>
+                        <button type="submit" class="btn-lg btn-block" style="width: 25%; background-color: #37a3c4; border: none;">Signup</button>
+                    </form>
+                    <div class="text-center mt-2">
+                        <p class="text-muted mb-2">Already have an account? <a href="{% url 'login' %}" class="text-primary">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
