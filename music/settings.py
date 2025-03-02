@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-xofe24^u9mln--vok8capi+72m_2v9fq8^r-iu0ulzwtf4z^2c"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -153,8 +153,13 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # This should point to your Django app’s static files
-    BASE_DIR / "static/react/build",# This should point to your react app’s static files
+    # BASE_DIR / "static/react/build",# This should point to your react app’s static files
 ]
+
+# Add React build files directory if it exists
+react_build_path = BASE_DIR / "static/react/build"
+if react_build_path.exists():
+    STATICFILES_DIRS.append(react_build_path)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
